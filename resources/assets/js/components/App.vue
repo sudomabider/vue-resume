@@ -1,11 +1,17 @@
 <template>
     <div id="app">
         <HeaderComponent />
+
         <main class="container">
-            <transition name="out-in">
-                <keep-alive>
-                    <router-view></router-view>
-                </keep-alive>
+            <transition name="fade" mode="out-in">
+                <div :key="routename">
+                    <router-link :to="{ name: 'home' }" class="btn btn-info btn-block mb-1" v-if="!homepage">
+                        <i class="fa fa-arrow-left"></i> Go Back
+                    </router-link>
+                    <keep-alive>
+                        <router-view></router-view>
+                    </keep-alive>
+                </div>
             </transition>
         </main>
         <!--<footer>-->
@@ -22,7 +28,7 @@
 </template>
 
 <script>
-  import auth from '../services/AuthService';
+  import auth from '../services/AuthService'
   import Header from './Header.vue'
 
   const App = {
@@ -32,9 +38,18 @@
 
     data () {
       return {
-        breadcrumbs: [],
         modalIsOpen: false,
         user: {}
+      }
+    },
+
+    computed: {
+      homepage () {
+        return this.$route.name === 'home';
+      },
+
+      routename() {
+        return this.$route.name;
       }
     },
 
@@ -55,3 +70,12 @@
 
   export default App
 </script>
+
+<style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .3s
+    }
+    .fade-enter, .fade-leave-active {
+        opacity: 0
+    }
+</style>

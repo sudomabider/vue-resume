@@ -15,6 +15,11 @@ class ExperienceController extends Controller
 {
     public function index()
     {
-        return Experience::orderBy('start', 'desc')->with('highlights', 'skills')->get();
+        return Experience::orderBy('start', 'desc')->get();
+    }
+
+    public function show(Experience $experience)
+    {
+        return $experience->load('highlights', 'skills');
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="jumbotron text-xs-center">
-        <router-link :to="{ name: 'home' }" tag="h1">
+        <router-link :to="{ name: 'home' }" tag="h1" style="cursor: pointer">
             Resume <small>with vue.js</small>
         </router-link>
         <p>Full stack web developer and a  <Rotator :values="rotation" /></p>

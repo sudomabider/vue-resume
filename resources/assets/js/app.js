@@ -7,7 +7,7 @@ import HomeView from './views/HomeView.vue'
 import LoginView from './views/LoginView.vue'
 // import TopicView from './components/TopicView'
 // import {fromNow, largeNumbers} from './filters/index'
-// import CategoryView from './components/CategoryView'
+import ExperienceView from './views/ExperienceView.vue'
 import { year } from './filters/timeFilters'
 
 // Install some plugins
@@ -23,10 +23,7 @@ Vue.filter('year', year);
 
 const routes = [
   {path: '/', name: 'home', component: HomeView},
-  // 'experiences/:experienceId': {
-  //   name: 'experience.show',
-  //   component: CategoryView
-  // }
+  {path: '/experiences/:id', name: 'experience.show', component: ExperienceView},
   // 'topic/:topicId': {
   //   name: 'topic',
   //   component: TopicView

@@ -1,37 +1,28 @@
 <template>
     <div id="experiences">
-       <transition name="fade" mode="out-in">
-           <div v-if="!current">
-               <Experience
-                       v-for="experience in experiences"
-                       :experience="experience"
-                       :startyear="startyear"
-                       :endyear="endyear"
-                       :expand="expand"
-                       track-by="id">
-               </Experience>
-           </div>
-           <ExperienceDetails
-                   v-else
-                   :experience="current"
-                   :expand="expand"/>
-       </transition>
+       <div v-if="!current">
+           <Experience
+                   v-for="experience in experiences"
+                   :experience="experience"
+                   :startyear="startyear"
+                   :endyear="endyear"
+                   track-by="id">
+           </Experience>
+       </div>
     </div>
 </template>
 
 <script>
   import Experience from './Experience.vue'
-  import ExperienceDetails from './ExperienceDetails.vue'
   import experienceService from '../services/ExperienceService'
 
   export default {
 
-    components: { Experience, ExperienceDetails },
+    components: { Experience },
 
     data () {
       return {
-        experiences: [],
-        current: false
+        experiences: []
       };
     },
 
@@ -52,14 +43,6 @@
           return experience.end_year;
         });
         return Math.max(...years);
-      },
-
-      currentKey() {
-        if (this.current) {
-          return this.current.id;
-        }
-
-        return 0;
       }
     },
 
@@ -73,20 +56,7 @@
           .then(({ data }) => {
           this.setExperiences(data);
         });
-      },
-
-      expand(experience) {
-        this.current = experience;
       }
     }
   }
 </script>
-
-<style>
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .3s
-    }
-    .fade-enter, .fade-leave-active {
-        opacity: 0
-    }
-</style>

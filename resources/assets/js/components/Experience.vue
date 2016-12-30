@@ -1,12 +1,12 @@
 <template>
     <div class="row experience">
         <div class="col-xs-12">
-            <div @click="toggle" style="cursor: pointer">
+            <router-link :to="{ name: 'experience.show', params: { id: this.experience.id } }" tag="div" style="cursor: pointer">
                 <span class="lead">{{ experience.employer }}</span>
                  | {{ experience.title  }}
                  | {{ experience.start_year }} <template v-if="!experience.is_single">- {{ experience.end_year }}</template>
-                 <i class="fa fa-plus-square"></i>
-            </div>
+                 <i class="fa fa-arrow-circle-o-right"></i>
+            </router-link>
             <div class="yearline-bg">
                 <div class="yearline" :style="style"></div>
             </div>
@@ -29,12 +29,6 @@
         },
         style() {
           return 'left:' + this.left + ';width:' + this.width + ';';
-        }
-      },
-
-      methods: {
-        toggle() {
-          this.expand(this.experience);
         }
       }
     }
