@@ -1,5 +1,6 @@
 <template>
     <div class="home-view">
+        <h1>- Experiences</h1>
         <Experiences />
     </div>
 </template>

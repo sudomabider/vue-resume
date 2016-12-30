@@ -3,7 +3,7 @@
         <HeaderComponent />
 
         <main class="container">
-            <transition name="fade" mode="out-in">
+            <transition name="slide-fade" mode="out-in">
                 <div :key="routename">
                     <router-link :to="{ name: 'home' }" class="btn btn-info btn-block mb-1" v-if="!homepage">
                         <i class="fa fa-arrow-left"></i> Go Back
@@ -77,5 +77,21 @@
     }
     .fade-enter, .fade-leave-active {
         opacity: 0
+    }
+
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-active {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    h1 {
+        font-family: 'Ubuntu Mono', sans-serif;
+        text-transform: uppercase;
     }
 </style>
