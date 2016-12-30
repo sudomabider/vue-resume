@@ -1,0 +1,22 @@
+{
+  "name": "resume",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "components-font-awesome": "^4.7.0",
+    "bootswatch": "v4",
+    "jquery": "^3.1.1",
+    "bootstrap": "v4.0.0-alpha.5",
+    "animate-sass": "^0.6.6"
+  }
+}
