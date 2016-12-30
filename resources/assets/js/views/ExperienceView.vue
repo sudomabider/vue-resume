@@ -9,7 +9,8 @@
   export default {
     data() {
       return {
-        experience: {}
+        // this needs to be a falsy value
+        experience: ''
       }
     },
 

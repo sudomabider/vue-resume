@@ -1,14 +1,15 @@
 <template>
     <div id="experiences">
-       <div v-if="!current">
+        <transition-group name="list" tag="div">
            <Experience
-                   v-for="experience in experiences"
+                   v-for="(experience, index) in experiences"
                    :experience="experience"
                    :startyear="startyear"
                    :endyear="endyear"
+                   :key="index"
                    track-by="id">
            </Experience>
-       </div>
+        </transition-group>
     </div>
 </template>
 

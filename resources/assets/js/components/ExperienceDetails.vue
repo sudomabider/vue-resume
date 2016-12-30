@@ -4,7 +4,7 @@
             <div class="col-md-5">
                 <SkillChart v-if="skills" :skills="skills" />
             </div>
-            <div class="col-md-6 offset-md-1 mt-1">
+            <div class="col-md-6 offset-md-1 mt-1" v-if="experience">
                 <p>
                     <span class="lead">{{ experience.employer }}</span>
                     | {{ experience.title  }}

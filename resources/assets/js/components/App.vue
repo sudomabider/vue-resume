@@ -90,6 +90,14 @@
         opacity: 0;
     }
 
+    .list-enter-active, .list-leave-active {
+        transition: all .2s;
+    }
+    .list-enter, .list-leave-active {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
     h1 {
         font-family: 'Ubuntu Mono', sans-serif;
         text-transform: uppercase;
