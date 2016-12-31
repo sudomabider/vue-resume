@@ -46,6 +46,10 @@ class DatabaseSeeder extends Seeder
             'id' => 9,
             'name' => 'MySQL',
             'color' => '#3e78a6'
+        ], [
+            'id' => 10,
+            'name' => 'Semantic UI',
+            'color' => '#00B5AD'
         ]
     ];
 
@@ -85,9 +89,6 @@ class DatabaseSeeder extends Seeder
                 'Designing and developing a full fledged multi-vendor trading platform using Laravel',
                 'Designing and developing multiple CMS and blog sites',
                 'Various open source packages and side projects'
-                //'Fully responsive frontend built with Bootstrap, jQuery and VueJS',
-                //'Full fledged system with Redis caching and session, Beanstalk queue, automated deployment and multiple 3rd party service integrations',
-
             ]
         ], [
             'employer' => 'University of Auckland',
@@ -105,6 +106,57 @@ class DatabaseSeeder extends Seeder
             'type' => 'study',
             'highlights' => [],
             'skills' => []
+        ]
+    ];
+
+    private $projects = [
+        [
+            'name' => 'gez-studio/gez-market',
+            'source' => 'https://github.com/gez-studio/gez-market',
+            'url' => 'http://market.gez.co.nz',
+            'sort' => 1,
+            'skills' => [
+                1 => 30,
+                3 => 20,
+                5 => 20,
+                6 => 20,
+                9 => 10
+            ],
+            'highlights' => [
+                'E-Commerce platform supporting multiple individual vendors and shops',
+                'Fully responsive frontend built with Bootstrap, jQuery and VueJS',
+                'Full fledged system with Redis caching and session, Beanstalk queue, automated deployment and multiple 3rd party service integrations',
+            ]
+        ], [
+            'name' => 'sudomabider/bushimen-2.0',
+            'source' => 'https://github.com/sudomabider/bushimen-2.0',
+            'url' => 'https://bushimen.com',
+            'sort' => 2,
+            'skills' => [
+                1 => 60,
+                9 => 10,
+                10 => 30
+            ],
+            'highlights' => [
+                'Full fledged CMS system built with Laravel and Semantic UI',
+                'Custom made markdown extensions to integrate with Semantic UI',
+                'Complete data migration from old database to new schema'
+            ]
+        ], [
+            'name' => 'sudomabider/vue-resume',
+            'source' => 'https://github.com/sudomabider/vue-resume',
+            'url' => 'http://resume.veoveo.me',
+            'sort' => 3,
+            'skills' => [
+                1 => 40,
+                5 => 10,
+                8 => 50
+            ],
+            'highlights' => [
+                'Full single page app built with VueJS, and Laravel as API',
+                'Easy content management through admin panel',
+                'You\'re looking at it right now!',
+            ]
         ]
     ];
 
@@ -142,6 +194,21 @@ class DatabaseSeeder extends Seeder
 
             // Skills
             foreach ($experience['skills'] as $id => $skill) {
+                $instance->skills()->attach($id, ['percentage' => $skill]);
+            }
+        }
+
+        /* PROJECTS */
+        foreach ($this->projects as $project) {
+            $instance = \App\Entities\Project::create(\Illuminate\Support\Arr::only($project, ['name', 'source', 'url', 'sort']));
+
+            // Highlights
+            foreach ($project['highlights'] as $highlight) {
+                $instance->highlights()->save(new \App\Entities\Highlight(['content' => $highlight]));
+            }
+
+            // Skills
+            foreach ($project['skills'] as $id => $skill) {
                 $instance->skills()->attach($id, ['percentage' => $skill]);
             }
         }

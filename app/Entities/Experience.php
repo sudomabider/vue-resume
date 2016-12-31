@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
-    use Highlightable;
+    use Highlightable, Skillable;
 
     protected $appends = ['year_range', 'duration', 'start_year', 'end_year', 'is_single'];
 
@@ -45,16 +45,5 @@ class Experience extends Model
     public function getDurationAttribute()
     {
         return $this->start->diffInMonths($this->end);
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Skills
-    |--------------------------------------------------------------------------
-    */
-
-    public function skills()
-    {
-        return $this->belongsToMany(Skill::class)->withPivot('percentage');
     }
 }

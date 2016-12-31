@@ -33,29 +33,3 @@
       }
     }
 </script>
-
-<style>
-    .experience {
-        letter-spacing: 0.15rem;
-        margin-bottom: 1rem;
-    }
-
-    span.lead {
-        text-transform: uppercase;
-    }
-
-    .yearline-bg {
-        position: relative;
-        width: 100%;
-        height: 1rem;
-        background-color: #ccc;
-    }
-
-    .yearline {
-        position: absolute;
-        height: 1rem;
-        background-color: #555;
-        left: 20%;
-        width: 10%;
-    }
-</style>

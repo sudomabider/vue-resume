@@ -1,9 +1,11 @@
 <template>
     <div class="jumbotron text-xs-center">
-        <router-link :to="{ name: 'home' }" tag="h1" style="cursor: pointer">
-            Resume <small>with vue.js</small>
+        <router-link :to="{ name: 'home' }" tag="div" style="cursor: pointer">
+            <h1>
+                Veo Chen - <small>陈禹松</small>
+            </h1>
         </router-link>
-        <p>Full stack web developer and a  <Rotator :values="rotation" /></p>
+        <p>Full stack web developer specializing in <Rotator :values="rotation" /></p>
 
     </div>
 </template>
@@ -14,7 +16,7 @@
     export default {
       data() {
         return {
-          rotation: ['gamer', 'musician', 'motherfucker', 'meatlover']
+          rotation: ['Laravel', 'Bootstrap', 'VueJS', 'ReactJS']
         }
       },
 

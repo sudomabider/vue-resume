@@ -5,9 +5,8 @@ import auth from './services/AuthService'
 import App from './components/App.vue';
 import HomeView from './views/HomeView.vue'
 import LoginView from './views/LoginView.vue'
-// import TopicView from './components/TopicView'
-// import {fromNow, largeNumbers} from './filters/index'
 import ExperienceView from './views/ExperienceView.vue'
+import ProjectView from './views/ProjectView.vue'
 import { year } from './filters/timeFilters'
 
 // Install some plugins
@@ -24,6 +23,7 @@ Vue.filter('year', year);
 const routes = [
   {path: '/', name: 'home', component: HomeView},
   {path: '/experiences/:id', name: 'experience.show', component: ExperienceView},
+  {path: '/projects/:id', name: 'project.show', component: ProjectView},
   // 'topic/:topicId': {
   //   name: 'topic',
   //   component: TopicView

@@ -20,8 +20,8 @@ class CreateSkillsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('experience_skill', function(Blueprint $table) {
-            $table->unsignedInteger('experience_id');
+        Schema::create('has_skills', function(Blueprint $table) {
+            $table->morphs('skillable');
             $table->unsignedInteger('skill_id');
 
             $table->unsignedSmallInteger('percentage');
@@ -35,7 +35,7 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('experience_skill');
         Schema::dropIfExists('skills');
+        Schema::dropIfExists('has_skills');
     }
 }

@@ -1,0 +1,39 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: veoc
+ * Date: 1/01/17
+ * Time: 1:26 PM
+ */
+
+namespace App\Http\Controllers;
+
+
+use App\Entities\ProjectRepository;
+
+class ProjectController extends Controller
+{
+    /**
+     * @var ProjectRepository
+     */
+    private $projectRepository;
+
+    /**
+     * ProjectController constructor.
+     * @param ProjectRepository $projectRepository
+     */
+    public function __construct(ProjectRepository $projectRepository)
+    {
+        $this->projectRepository = $projectRepository;
+    }
+
+    public function index()
+    {
+        return $this->projectRepository->orderBy('sort', 'asc')->findAll();
+    }
+
+    public function show($projectId)
+    {
+        return $this->projectRepository->with(['highlights', 'skills'])->find($projectId);
+    }
+}

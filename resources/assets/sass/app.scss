@@ -38,3 +38,30 @@ $btn-light-color: $gray-lightest;
     transform: translateY(-0.2rem);
   }
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 1rem;
+  background: $gray;
+  color: #eee;
+  letter-spacing: .1rem;
+
+  a {
+    color: #f5f5f5;
+
+    &:hover, &:focus {
+      color: #fff;
+    }
+  }
+}

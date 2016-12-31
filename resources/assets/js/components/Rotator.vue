@@ -46,7 +46,7 @@
     .rotator {
         display: inline-block;
         font-size: 1.2em;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         border-bottom: 2px solid #555;
         margin: auto 0.2rem;
     }

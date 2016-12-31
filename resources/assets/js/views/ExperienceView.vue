@@ -19,14 +19,10 @@
     },
 
     methods: {
-      setExperience(experience) {
-        this.experience = experience
-      },
-
       fetchExperience() {
         experienceService.getOne(this.$route.params.id)
           .then(({ data }) => {
-            this.setExperience(data);
+            this.experience = data
           });
       }
     },
