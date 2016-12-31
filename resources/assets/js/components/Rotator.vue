@@ -1,6 +1,6 @@
 <template>
-    <transition name="slide-fade" mode="out-in">
-        <span :key="key">
+    <transition name="slide-down" mode="out-in">
+        <span :key="key" class="d-inline-block">
             <span class="rotator ubuntu-mono">{{ value }}</span>
         </span>
     </transition>
@@ -60,5 +60,26 @@
     .slide-fade-enter, .slide-fade-leave-active {
         transform: translateX(20px);
         opacity: 0;
+    }
+
+    .slide-down-enter-active {
+        transition: all .5s ease;
+    }
+    .slide-down-leave-active {
+        transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-down-enter {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    .slide-down-enter-active {
+        /*opacity: 1;*/ /*This screws up the initial opacity*/
+    }
+    .slide-down-leave-active {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    .slide-down-leave {
+        opacity: 1;
     }
 </style>
