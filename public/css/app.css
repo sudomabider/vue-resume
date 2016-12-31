@@ -10265,4 +10265,15 @@ body {
   background: #fbfaf7;
 }
 
+.clickable {
+  cursor: pointer;
+  -webkit-transition: all .1s ease;
+  transition: all .1s ease;
+}
+
+.clickable:hover, .clickable:focus {
+  -webkit-transform: translateY(-0.2rem);
+  transform: translateY(-0.2rem);
+}
+
 /*# sourceMappingURL=app.css.map */

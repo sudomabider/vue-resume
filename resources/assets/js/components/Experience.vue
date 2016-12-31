@@ -1,11 +1,11 @@
 <template>
     <div class="row experience">
         <div class="col-xs-12">
-            <router-link :to="{ name: 'experience.show', params: { id: this.experience.id } }" tag="div" style="cursor: pointer">
+            <router-link :to="{ name: 'experience.show', params: { id: this.experience.id } }" tag="div" class="clickable">
                 <span class="lead">{{ experience.employer }}</span>
                  | {{ experience.title  }}
-                 | {{ experience.start_year }} <template v-if="!experience.is_single">- {{ experience.end_year }}</template>
-                 <i class="fa fa-arrow-circle-o-right"></i>
+                 | {{ experience.year_range }}
+                 <i class="fa fa-expand"></i>
             </router-link>
             <div class="yearline-bg">
                 <div class="yearline" :style="style"></div>
@@ -18,14 +18,14 @@
     import { year } from '../filters/timeFilters'
 
     export default {
-      props: ['experience', 'startyear', 'endyear', 'expand'],
+      props: ['experience', 'duration'],
 
       computed: {
         width() {
-          return this.experience.year_duration*100/(this.endyear - this.startyear + 1) + '%';
+          return this.experience.duration*100/(this.duration) + '%';
         },
         left() {
-          return (this.experience.start_year - this.startyear)*100/(this.endyear - this.startyear + 1) + '%';
+          return (this.experience.left)*100/(this.duration) + '%';
         },
         style() {
           return 'left:' + this.left + ';width:' + this.width + ';';

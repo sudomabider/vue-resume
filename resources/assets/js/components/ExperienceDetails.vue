@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row" v-if="isWork">
             <div class="col-md-5">
                 <SkillChart v-if="skills" :skills="skills" />
             </div>
@@ -13,6 +13,15 @@
                 <p v-for="highlight in highlights">
                     <i class="fa fa-arrow-right"></i> {{ highlight.content }}
                 </p>
+            </div>
+        </div>
+        <div v-if="isStudy">
+            <div class="text-xs-center ubuntu-mono">
+                <p>Nothing to see here...</p>
+                <p class="lead">Education is overrated.</p>
+                <h1>
+                    Learn By doing!
+                </h1>
             </div>
         </div>
     </div>
@@ -30,6 +39,12 @@
         },
         skills() {
           return this.experience.skills;
+        },
+        isWork() {
+          return this.experience.type === 'work';
+        },
+        isStudy() {
+          return this.experience.type === 'study';
         }
       },
 

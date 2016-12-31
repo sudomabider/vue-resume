@@ -2,13 +2,14 @@
 
 namespace App\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
     use Highlightable;
 
-    protected $appends = ['year_range', 'year_duration', 'start_year', 'end_year', 'is_single'];
+    protected $appends = ['year_range', 'duration', 'start_year', 'end_year', 'is_single'];
 
     protected $dates = ['start', 'end'];
 
@@ -25,7 +26,7 @@ class Experience extends Model
 
     public function getEndYearAttribute()
     {
-        return $this->end->year;
+        return $this->end ? $this->end->year : Carbon::today()->year;
     }
 
     public function getIsSingleAttribute()
@@ -36,14 +37,14 @@ class Experience extends Model
     public function getYearRangeAttribute()
     {
         $start = $this->getStartYearAttribute();
-        $end = $this->getEndYearAttribute();
+        $end = $this->end ? $this->end->year : 'Present';
 
-        return $start === $end ? $start : "$start - $end";
+        return $this->getIsSingleAttribute() ? $start : "$start - $end";
     }
 
-    public function getYearDurationAttribute()
+    public function getDurationAttribute()
     {
-        return $this->start->diffInMonths($this->end)/12;
+        return $this->start->diffInMonths($this->end);
     }
 
     /*

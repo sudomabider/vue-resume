@@ -4,8 +4,7 @@
            <Experience
                    v-for="(experience, index) in experiences"
                    :experience="experience"
-                   :startyear="startyear"
-                   :endyear="endyear"
+                   :duration="duration"
                    :key="index"
                    track-by="id">
            </Experience>
@@ -23,7 +22,8 @@
 
     data () {
       return {
-        experiences: []
+        experiences: [],
+        duration: ''
       };
     },
 
@@ -31,31 +31,13 @@
       this.fetchExperiences();
     },
 
-    computed: {
-      startyear() {
-        const years = this.experiences.map(function(experience) {
-          return experience.start_year;
-        });
-        return Math.min(...years);
-      },
-
-      endyear() {
-        const years = this.experiences.map(function(experience) {
-          return experience.end_year;
-        });
-        return Math.max(...years);
-      }
-    },
-
     methods: {
-      setExperiences(experiences) {
-        this.experiences = experiences
-      },
-
       fetchExperiences() {
         experienceService.getAll()
           .then(({ data }) => {
-          this.setExperiences(data);
+            console.log(data);
+            this.experiences = data.experiences;
+            this.duration = data.duration;
         });
       }
     }

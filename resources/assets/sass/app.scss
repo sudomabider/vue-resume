@@ -29,3 +29,12 @@ $btn-light-color: $gray-lightest;
     background: lighten($btn-light-color, 2%);
   }
 }
+
+.clickable {
+  cursor: pointer;
+  transition: all .1s ease;
+
+  &:hover, &:focus {
+    transform: translateY(-0.2rem);
+  }
+}

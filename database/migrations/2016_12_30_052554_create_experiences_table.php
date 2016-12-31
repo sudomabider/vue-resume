@@ -18,7 +18,10 @@ class CreateExperiencesTable extends Migration
             $table->string('employer');
             $table->string('title');
             $table->date('start');
-            $table->date('end');
+            $table->date('end')->nullable();
+
+            $table->enum('type', ['work', 'study']);
+
             $table->timestamps();
         });
     }
