@@ -116,9 +116,8 @@ class DatabaseSeeder extends Seeder
             'url' => 'http://market.gez.co.nz',
             'sort' => 1,
             'skills' => [
-                1 => 30,
-                3 => 20,
-                5 => 20,
+                1 => 40,
+                5 => 30,
                 6 => 20,
                 9 => 10
             ],
