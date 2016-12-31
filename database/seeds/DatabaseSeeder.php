@@ -60,11 +60,11 @@ class DatabaseSeeder extends Seeder
                 2 => 20,
                 3 => 10,
                 4 => 30,
-                5 => 40
+                6 => 40
             ],
             'highlights' => [
                 'Developing and maintaining search apps for hundreds of clients',
-                'Adapting and debugging hundreds of different web implementation',
+                'Adapting and debugging hundreds of different web implementations',
                 'Strong emphasis on frontend web technologies and standards',
                 'Writing and maintaining search instances using Perl and Java',
                 'Closely working with Solr-based proprietary search engine'
@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
             'highlights' => [
                 'Designing and developing a full fledged multi-vendor trading platform using Laravel',
                 'Designing and developing multiple CMS and blog sites',
-                'Open source packages and side projects'
+                'Various open source packages and side projects'
                 //'Fully responsive frontend built with Bootstrap, jQuery and VueJS',
                 //'Full fledged system with Redis caching and session, Beanstalk queue, automated deployment and multiple 3rd party service integrations',
 
