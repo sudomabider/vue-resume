@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
                 9 => 10
             ],
             'highlights' => [
-                'E-Commerce platform supporting multiple individual vendors and shops',
+                'Multi-vendor E-Commerce platform; supports both sole traders and shops',
                 'Fully responsive frontend built with Bootstrap, jQuery and VueJS',
                 'Full fledged system with Redis caching and session, Beanstalk queue, automated deployment and multiple 3rd party service integrations',
             ]
