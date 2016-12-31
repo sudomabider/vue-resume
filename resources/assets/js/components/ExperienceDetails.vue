@@ -19,9 +19,9 @@
             <div class="text-xs-center ubuntu-mono">
                 <p>Nothing to see here...</p>
                 <p class="lead">Education is overrated.</p>
-                <h1>
+                <div class="banner-dark">
                     Learn By doing!
-                </h1>
+                </div>
             </div>
         </div>
     </div>
@@ -53,3 +53,14 @@
       }
     }
 </script>
+
+<style>
+    .banner-dark {
+        padding: 2rem;
+        letter-spacing: .3rem;
+        font-size: 4rem;
+        background: #333;
+        color: #f8f8f8;
+        text-transform: uppercase;
+    }
+</style>

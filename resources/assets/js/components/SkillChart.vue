@@ -27,7 +27,7 @@
         labels: this.labels,
         datasets: [
           {
-            label: 'Skill Chart',
+            label: 'Relevant Skills',
             data: this.data,
             backgroundColor: this.colors
           }

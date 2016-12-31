@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             ]
         ], [
             'employer' => 'University of Auckland',
-            'title' => 'Graduate Diploma in Softare Engineering',
+            'title' => 'Graduate Diploma in Software Engineering',
             'start' => '2012-02-01',
             'end' => '2012-11-01',
             'type' => 'study',

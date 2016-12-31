@@ -1,6 +1,6 @@
 <template>
     <div class="home-view">
-        <h1>- Experiences</h1>
+        <h1 class="resume-header">Experiences</h1>
         <div id="experiences">
             <transition-group name="list" tag="div">
                 <Experience
@@ -12,8 +12,8 @@
                 </Experience>
             </transition-group>
         </div>
-
-        <h1>- Education</h1>
+        <br>
+        <h1 class="resume-header">Education</h1>
         <div id="educations">
             <transition-group name="list" tag="div">
                 <Experience
@@ -63,3 +63,13 @@
     components: { Experience },
   }
 </script>
+
+<style>
+    .resume-header {
+        letter-spacing: .2rem;
+        background: #333;
+        color: #f8f8f8;
+        display: inline-block;
+        padding: 0.1rem 0.5rem;
+    }
+</style>
