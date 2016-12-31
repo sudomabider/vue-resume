@@ -1,1 +1,3 @@
-My attempt at an resume built with VueJs
+- move to sqlite
+- move to redis cache
+- add repositories

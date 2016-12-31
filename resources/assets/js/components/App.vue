@@ -5,7 +5,7 @@
         <main class="container">
             <transition name="slide-fade" mode="out-in">
                 <div :key="routename">
-                    <router-link :to="{ name: 'home' }" class="btn btn-info btn-block mb-1" v-if="!homepage">
+                    <router-link :to="{ name: 'home' }" class="btn btn-light btn-block mb-1" v-if="!homepage">
                         <i class="fa fa-arrow-left"></i> Go Back
                     </router-link>
                     <keep-alive>

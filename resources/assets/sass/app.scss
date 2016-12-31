@@ -19,3 +19,13 @@ $enable-transitions: true;
 .ubuntu-mono {
   font-family: "Ubuntu Mono", sans-serif;
 }
+
+$btn-light-color: $gray-lightest;
+
+.btn-light {
+  background: $btn-light-color;
+
+  &:hover, &:focus {
+    background: lighten($btn-light-color, 2%);
+  }
+}
