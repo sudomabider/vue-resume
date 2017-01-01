@@ -5,7 +5,7 @@
                 <SkillChart v-if="skills" :skills="skills" />
             </div>
             <div class="col-md-6 offset-md-1 mt-1" v-if="experience">
-                <p>
+                <p style="letter-spacing: .1rem">
                     <span class="lead">{{ experience.employer }}</span>
                     | {{ experience.title  }}
                     | {{ experience.start_year }} <template v-if="!experience.is_single">- {{ experience.end_year }}</template>
