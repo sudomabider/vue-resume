@@ -8,10 +8,10 @@
                 <p class="lead">{{ project.name }}</p>
                 <p>
                     <span class="d-block">
-                        <i class="fa fa-link fa-fw"></i> <a href="project.url" target="_blank">{{ project.url }}</a>
+                        <i class="fa fa-link fa-fw"></i> <a :href="project.url" target="_blank">{{ project.url }}</a>
                     </span>
                     <span class="d-block">
-                        <i class="fa fa-github fa-fw"></i> <a href="project.source" target="_blank">{{ project.source }}</a>
+                        <i class="fa fa-github fa-fw"></i> <a :href="project.source" target="_blank">{{ project.source }}</a>
                     </span>
                 </p>
                 <p v-for="highlight in highlights">
