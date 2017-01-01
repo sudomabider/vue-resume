@@ -15,7 +15,7 @@
 <footer class="ubuntu-mono">
     <div class="container text-xs-center">
         <div class="copyright">
-            ©COPYRIGHT {{ \Carbon\Carbon::today()->year }} veoveo.me
+            ©COPYRIGHT 2016 - {{ \Carbon\Carbon::today()->year }} veoveo.me
         </div>
         <div style="text-transform: uppercase">
             <a href="https://github.com/sudomabider" target="_blank">

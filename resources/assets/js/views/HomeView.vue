@@ -93,7 +93,7 @@
 <style>
     .home-view h1 {
         letter-spacing: .2rem;
-        background: #333;
+        background: #888;
         color: #f8f8f8;
         display: inline-block;
         padding: 0.1rem 0.5rem;
