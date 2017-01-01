@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
                 'Developing and maintaining search apps for hundreds of clients',
                 'Adapting and debugging hundreds of different web implementations',
                 'Strong emphasis on frontend web technologies and standards',
-                'Writing and maintaining search instances using Perl and Java',
+                'Integrating and maintaining search instances using Perl and Java',
                 'Closely working with Solr-based proprietary search engine'
             ],
         ], [
