@@ -117,7 +117,8 @@ $style = [
                                     @unless($forMe)
                                     <p style="{{ $style['paragraph'] }}">
                                         I will get back to you if necessary.
-                                        <br>
+                                    </p>
+                                    <p style="{{ $style['paragraph] }}">
                                         Regards, Veo
                                     </p>
                                     @endunless

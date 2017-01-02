@@ -27,7 +27,9 @@
             </div>
 
             <div class="form-group">
-                <VueRecaptcha ref="recaptcha" :sitekey="siteKey"></VueRecaptcha>
+                <div class="g-recaptcha">
+                    <VueRecaptcha ref="recaptcha" :sitekey="siteKey"></VueRecaptcha>
+                </div>
             </div>
 
             <div class="form-group">
@@ -39,7 +41,7 @@
         <div v-if="sent" class="text-xs-center">
             <div class="alert alert-success">
                 <h4>Thanks for your message!</h4>
-                I'll get back to you when I can if necessary.
+                I'll get back to you when I can.
             </div>
             <div class="text-xs-center">
                 <a href="#" @click.prevent="refresh" class="text-muted">Send another one?</a>
@@ -123,3 +125,9 @@
       components: { VueRecaptcha }
     }
 </script>
+
+<style>
+    @media screen and (max-height: 575px){
+        .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+    }
+</style>
