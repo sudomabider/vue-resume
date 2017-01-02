@@ -32,7 +32,7 @@ $btn-light-color: $gray-lightest;
 
 .clickable {
   cursor: pointer;
-  transition: all .1s ease;
+  transition: all .2s ease;
 
   &:hover, &:focus {
     transform: translateY(-0.2rem);

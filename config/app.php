@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Veo\'s Resume',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
 
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Rinvex\Repository\Providers\RepositoryServiceProvider::class,
 
         /*

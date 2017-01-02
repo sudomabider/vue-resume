@@ -84,6 +84,9 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
+    // 3rd party
+    'captcha' => 'Captcha is either invalid or has expired',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

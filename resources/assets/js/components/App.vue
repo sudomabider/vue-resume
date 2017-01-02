@@ -14,12 +14,28 @@
                 </div>
             </transition>
         </main>
+        <br>
+        <div class="jumbotron" style="padding:2rem;">
+            <div class="container ubuntu-mono">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="text-xs-center" style="margin-bottom:1rem;">GET IN TOUCH</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-lg-2 col-lg-8">
+                        <ContactForm />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
   import auth from '../services/AuthService'
   import Header from './Header.vue'
+  import ContactForm from '../components/ContactForm.vue'
 
   const App = {
     mounted () {
@@ -58,7 +74,8 @@
     },
 
     components: {
-      'HeaderComponent': Header
+      'HeaderComponent': Header,
+      ContactForm
     }
   };
 

@@ -7,6 +7,11 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+
+    <script>
+        window.recaptchaKey = "{{ config('services.recaptcha.key') }}";
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
 </head>
 
 <body>
