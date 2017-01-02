@@ -109,13 +109,19 @@ return [
 
         'cluster' => false,
 
-        'default' => [
+        'cache' => [
             'host' => env('REDIS_HOST', 'localhost'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
-            'database' => 0,
+            'database' => 1,
         ],
 
+        'session' => [
+            'host' => env('REDIS_HOST', 'localhost'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => 2,
+        ],
     ],
 
 ];
