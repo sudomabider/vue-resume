@@ -33,8 +33,10 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-info btn-block">
-                    <i class="fa fa-send-o fa-fw"></i> SEND
+                <button type="submit" class="btn btn-info btn-block" :disabled="loading">
+                    <i class="fa fa-send-o fa-fw" v-if="!loading"></i>
+                    <i class="fa fa-spinner fa-spin fa-fw" v-else></i>
+                    SEND
                 </button>
             </div>
         </form>
@@ -61,7 +63,8 @@
           email: '',
           message: '',
           sent: false,
-          errors: []
+          errors: [],
+          loading: false
         }
       },
       computed: {
@@ -79,8 +82,10 @@
           this.message = '';
           this.sent = false;
           this.errors = [];
+          this.$refs.recaptcha.reset();
         },
         submit() {
+          this.loading = true;
           const data = JSON.stringify({
             name: this.name,
             email: this.email,
@@ -88,11 +93,11 @@
             recaptcharesponse: document.querySelector('[name="g-recaptcha-response"]').value
           });
           contactService.post(data).then(({data}) => {
-            this.$refs.recaptcha.reset();
+            this.loading = false;
             this.sent = true;
           }, (error) => {
+            this.loading = false;
             this.$refs.recaptcha.reset();
-
             // server error
             if (error.status === 500) {
               this.errors = ['Whoops! Something went wrong. Please refresh and try again.'];

@@ -93,7 +93,7 @@ $style = [
                                     @endunless
 
                                     <!-- Intro -->
-                                    <h2>
+                                    <h2 style="{{ $style['header-1'] }}">
                                         @if($forMe)
                                             You have a new message.
                                         @else
@@ -118,7 +118,7 @@ $style = [
                                     <p style="{{ $style['paragraph'] }}">
                                         I will get back to you if necessary.
                                     </p>
-                                    <p style="{{ $style['paragraph] }}">
+                                    <p style="{{ $style['paragraph'] }}">
                                         Regards, Veo
                                     </p>
                                     @endunless
