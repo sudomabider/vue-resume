@@ -35,7 +35,7 @@ $btn-light-color: $gray-lightest;
   transition: all .2s ease;
 
   &:hover, &:focus {
-    transform: translateY(-0.2rem);
+    transform: translateX(0.5rem);
   }
 }
 
