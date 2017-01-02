@@ -17,6 +17,7 @@ class ContactController extends Controller
 {
     public function post(Request $request)
     {
+        //sleep(1);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',

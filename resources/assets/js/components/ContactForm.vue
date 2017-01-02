@@ -84,7 +84,6 @@
           this.message = '';
           this.sent = false;
           this.errors = [];
-          this.$refs.recaptcha.reset();
         },
         submit() {
           this.loading = true;
@@ -95,6 +94,7 @@
             recaptcharesponse: document.querySelector('[name="g-recaptcha-response"]').value
           });
           contactService.post(data).then(({data}) => {
+            this.$refs.recaptcha.reset();
             this.loading = false;
             this.sent = true;
           }, (error) => {
