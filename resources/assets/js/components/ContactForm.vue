@@ -1,17 +1,19 @@
 <template>
-    <transition name="fade" mode="out-in">
+    <transition name="slide-down-fade" mode="out-in">
         <form @submit.prevent="submit" id="contact-form" v-if="!sent">
 
-            <div class="alert alert-danger" v-if="errors.length > 0" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="closeErrors">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <ul class="list-unstyled">
-                    <li v-for="error in errors">
-                        {{ error }}
-                    </li>
-                </ul>
-            </div>
+            <transition name="fade-up">
+                <div class="alert alert-danger" v-if="errors.length > 0" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="closeErrors">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <ul class="list-unstyled">
+                        <li v-for="error in errors">
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
+            </transition>
 
             <div class="row">
                 <div class="form-group col-md-6">

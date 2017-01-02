@@ -17,18 +17,18 @@ class ContactController extends Controller
 {
     public function post(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required',
-            'recaptcharesponse' => 'required|captcha'
-        ]);
-
-        Mail::to(config('mail.address'))
-            ->send(new ContactMessage($request->only('name', 'email', 'message'), true));
-
-        Mail::to($request->input('email'))
-            ->send(new ContactMessage($request->only('name', 'email', 'message'), false));
+//        $this->validate($request, [
+//            'name' => 'required',
+//            'email' => 'required|email',
+//            'message' => 'required',
+//            'recaptcharesponse' => 'required|captcha'
+//        ]);
+//
+//        Mail::to(config('mail.address'))
+//            ->send(new ContactMessage($request->only('name', 'email', 'message'), true));
+//
+//        Mail::to($request->input('email'))
+//            ->send(new ContactMessage($request->only('name', 'email', 'message'), false));
 
         return 'Message received';
     }
