@@ -1,6 +1,13 @@
 <template>
     <div class="home-view">
-        <h1>Experiences</h1>
+        <h1 class="resume-header">
+            Experiences
+        </h1>
+        <h1 class="d-inline" v-if="$root.authenticated">
+            <router-link :to="{ name: 'home'}" class="btn btn-success btn-sm">
+                <i class="fa fa-plus fa-fw"></i>NEW
+            </router-link>
+        </h1>
         <div id="experiences">
             <transition-group name="list" tag="div">
                 <Experience
@@ -13,7 +20,7 @@
             </transition-group>
         </div>
         <br>
-        <h1>Education</h1>
+        <h1 class="resume-header">Education</h1>
         <div id="educations">
             <transition-group name="list" tag="div">
                 <Experience
@@ -26,7 +33,7 @@
             </transition-group>
         </div>
         <br>
-        <h1>Projects</h1>
+        <h1 class="resume-header">Projects</h1>
         <div id="projects">
             <transition-group name="list" tag="div">
                 <Project
@@ -91,7 +98,7 @@
 </script>
 
 <style>
-    .home-view h1 {
+    h1.resume-header {
         letter-spacing: .2rem;
         background: #888;
         color: #f8f8f8;

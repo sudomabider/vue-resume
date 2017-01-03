@@ -13,30 +13,19 @@ export default {
   login (context, credentials) {
     Vue.http.post('/api/login', credentials)
       .then(({data: {token}}) => {
-        // Hide the error message in case this time
-        // the credentials were valid.
         context.hideError();
 
         this.setToken(token);
         this.getUserInfo(token);
 
-        const prevPage = localStorage.getItem('prevPage') || '/';
-        router.go(prevPage);
+        router.push('/');
       }, (error) => {
-        // Show some error message on the invoking vm
-        // telling the user that his/her credentials
-        // are wrong.
         context.showError();
       });
   },
 
-  register (userInfo) {
-    Vue.http.post('/api/register', userInfo)
-      .then(({data}) => {
-        this.setToken(data.token);
-        this.getUserInfo(data.token);
-        router.go('/');
-      });
+  check() {
+    return this.user.authenticated;
   },
 
   getUserInfo (token) {
@@ -48,21 +37,21 @@ export default {
 
     Vue.http.get('/api/me')
       .then(({data}) => {
-        this.user.id = data.id;
-        this.user.name = data.name;
-        this.user.email = data.email;
-        this.user.authenticated = true;
+        if (typeof data === 'object' && data.user) {
+          this.user.id = data.user.id;
+          this.user.name = data.user.name;
+          this.user.email = data.user.email;
+          this.user.authenticated = true;
+        }
       }, ({data}) => {
-        // If the token cannot be refreshed,
-        // then the token is invalid.
+        localStorage.removeItem('jwt-token');
         if (! data.refreshed_token) {
-          console.error('Invalid user.');
-          router.go('/');
+          router.push('/login');
         }
       });
   },
 
-  checkAuth () {
+  init () {
     this.getUserInfo();
   },
 
@@ -76,7 +65,10 @@ export default {
       this.user.email = '';
 
       localStorage.removeItem('jwt-token');
-      router.go('/');
+
+      if (router.currentRoute.meta.auth) {
+        router.push('/login');
+      }
     }
   },
 
@@ -86,7 +78,6 @@ export default {
 
   setToken (token) {
     localStorage.setItem('jwt-token', token);
-    return this.getUserInfo(token);
   }
 
 }

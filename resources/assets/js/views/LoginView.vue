@@ -1,26 +1,36 @@
 <template>
-  <div class="login-view">
-    <div class="Login-alert" v-show="authError" transition="fade">
-      Wrong email / password combination
+  <div id="login">
+    <h1 class="text-xs-center">Login</h1>
+    <div class="col-lg-8 offset-lg-2 col-md-1 offset-md-10">
+      <transition name="fade-up">
+        <div class="alert alert-danger" v-show="authError">
+          Invalid credentials
+        </div>
+      </transition>
+      <form class="Login-form" @submit.prevent="login">
+        <div class="form-group">
+          <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  v-model="creds.email"
+                  placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  v-model="creds.password"
+                  placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">
+            Login
+          </button>
+        </div>
+      </form>
     </div>
-    <h1 class="Login-title">Login</h1>
-    <form class="Login-form" @submit.prevent="login">
-      <input
-        type="email"
-        name="email"
-        class="Login-form__input"
-        v-model="creds.email"
-        placeholder="Email" required>
-      <input
-        type="password"
-        name="password"
-        class="Login-form__input"
-        v-model="creds.password"
-        placeholder="Password" required>
-      <button type="submit" class="Button Login-form__button">
-        Login
-      </button>
-    </form>
   </div>
 </template>
 
@@ -28,7 +38,7 @@
 
   import auth from '../services/AuthService';
 
-  const LoginView = {
+  export default {
 
     data () {
       return {
@@ -43,7 +53,7 @@
     methods: {
       login () {
         auth.login(this, this.creds);
-        this.creds = { email: '', password: '' };
+        //this.creds = { email: '', password: '' };
       },
 
       showError () {
@@ -53,15 +63,6 @@
       hideError () {
         this.authError = false;
       }
-    },
-
-    route: {
-      activate () {
-        this.$root.breadcrumbs = [];
-        this.hideError();
-      }
     }
-  };
-
-  export default LoginView
+  }
 </script>

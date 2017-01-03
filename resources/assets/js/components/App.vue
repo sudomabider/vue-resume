@@ -14,17 +14,19 @@
                 </div>
             </transition>
         </main>
-        <br>
-        <div class="jumbotron" style="padding:2rem;">
-            <div class="container ubuntu-mono">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2 class="text-xs-center" style="margin-bottom:1rem;">GET IN TOUCH</h2>
+        <div v-if="showContact">
+            <br>
+            <div class="jumbotron" style="padding:2rem;">
+                <div class="container ubuntu-mono">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="text-xs-center" style="margin-bottom:1rem;">GET IN TOUCH</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="offset-lg-2 col-lg-8">
-                        <ContactForm />
+                    <div class="row">
+                        <div class="offset-lg-2 col-lg-8">
+                            <ContactForm />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,10 +40,6 @@
   import ContactForm from '../components/ContactForm.vue'
 
   const App = {
-    mounted () {
-      this.user = auth.user;
-    },
-
     data () {
       return {
         modalIsOpen: false,
@@ -60,6 +58,10 @@
 
       currentYear() {
         return new Date().getFullYear();
+      },
+
+      showContact() {
+        return this.$route.name !== 'login' && !auth.check();
       }
     },
 

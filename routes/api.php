@@ -17,3 +17,6 @@ $router->resource('experiences', 'ExperienceController');
 $router->resource('projects', 'ProjectController');
 
 $router->post('contact', ['uses' => 'ContactController@post']);
+
+$router->post('login', ['uses' => 'AuthController@authenticate']);
+$router->get('me', ['uses' => 'AuthController@getAuthenticatedUser']);

@@ -169,6 +169,7 @@ return [
 
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Rinvex\Repository\Providers\RepositoryServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...

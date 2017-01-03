@@ -3,7 +3,7 @@
         <form @submit.prevent="submit" id="contact-form" v-if="!sent">
 
             <transition name="fade-up">
-                <div class="alert alert-danger" v-if="errors.length > 0" role="alert">
+                <div class="alert alert-danger" v-show="errors.length > 0" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="closeErrors">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -42,7 +42,7 @@
                 </button>
             </div>
         </form>
-        <div v-if="sent" class="text-xs-center">
+        <div v-else class="text-xs-center">
             <div class="alert alert-success">
                 <h4>Thanks for your message!</h4>
                 I'll get back to you when I can.
