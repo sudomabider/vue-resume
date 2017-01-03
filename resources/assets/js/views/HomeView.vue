@@ -4,7 +4,7 @@
             Experiences
         </h1>
         <h1 class="d-inline" v-if="$root.authenticated">
-            <router-link :to="{ name: 'home'}" class="btn btn-success btn-sm">
+            <router-link :to="{ name: 'experience.create'}" class="btn btn-success btn-sm">
                 <i class="fa fa-plus fa-fw"></i>NEW
             </router-link>
         </h1>

@@ -26,6 +26,7 @@ class ExperienceController extends Controller
     public function __construct(ExperienceRepository $experienceRepository)
     {
         $this->experienceRepository = $experienceRepository;
+        $this->middleware('jwt.auth')->only('store', 'update', 'destroy');
     }
 
     public function index()

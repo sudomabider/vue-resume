@@ -6,9 +6,10 @@ import App from './components/App.vue';
 import HomeView from './views/HomeView.vue'
 import ExperienceView from './views/ExperienceView.vue'
 import ExperienceCreate from './views/ExperienceCreate.vue'
+import ExperienceEdit from './views/ExperienceEdit.vue'
 import ProjectView from './views/ProjectView.vue'
 import LoginView from './views/LoginView.vue'
-import { year } from './filters/timeFilters'
+import { year, yearMonth } from './filters/timeFilters'
 
 // Install some plugins
 Vue.use(VueRouter);
@@ -16,6 +17,7 @@ Vue.use(Resource);
 
 // Register filters globally
 Vue.filter('year', year);
+Vue.filter('yearMonth', yearMonth);
 
 const routes = [
   {path: '/', name: 'home', component: HomeView},
@@ -23,7 +25,8 @@ const routes = [
   {path: '/projects/:id', name: 'project.show', component: ProjectView},
   {path: '/login', name: 'login', component: LoginView, meta: {guest: true}},
 
-  {path: '/experiences/create', name: 'experience.create', component: ExperienceCreate},
+  {path: '/experiences/create', name: 'experience.create', component: ExperienceCreate, meta: {auth:true}},
+  {path: '/experiences/:id/edit', name: 'experience.edit', component: ExperienceEdit, meta: {auth:true}},
 
   {path: '*', redirect: '/'}
 ];

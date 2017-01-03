@@ -1,7 +1,10 @@
 <template>
     <div class="row experience">
         <div class="col-xs-12">
-            <router-link :to="{ name: 'experience.show', params: { id: this.experience.id } }" tag="div" class="clickable">
+            <router-link :to="{ name: 'experience.edit', params: {id: this.experience.id}}" v-if="$root.authenticated">
+                <i class="fa fa-edit"></i>
+            </router-link>
+            <router-link :to="{ name: 'experience.show', params: { id: this.experience.id } }" tag="div" class="clickable d-inline-block">
                 <span class="lead">{{ experience.employer }}</span>
                  | {{ experience.title  }}
                  | {{ experience.year_range }}

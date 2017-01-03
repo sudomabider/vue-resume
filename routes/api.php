@@ -15,6 +15,7 @@ $router = app(\Illuminate\Routing\Router::class);
 
 $router->resource('experiences', 'ExperienceController');
 $router->resource('projects', 'ProjectController');
+$router->resource('skills', 'SkillController');
 
 $router->post('contact', ['uses' => 'ContactController@post']);
 
