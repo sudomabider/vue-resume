@@ -79,9 +79,11 @@
       methods: {
         edit() {
           this.editing = true;
+          this.reset();
         },
         cancel() {
           this.editing = false;
+          this.reset();
         },
         saveSkill() {
           this.editing = false;

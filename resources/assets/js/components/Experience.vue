@@ -1,7 +1,7 @@
 <template>
     <div class="row experience">
         <div class="col-xs-12">
-            <router-link :to="{ name: 'experience.edit', params: {id: this.experience.id}}" v-if="$root.authenticated">
+            <router-link :to="{ name: 'experience.edit', params: {id: this.experience.id}}" v-if="$root.authenticated" class="btn btn-link">
                 <i class="fa fa-pencil"></i>
             </router-link>
             <router-link :to="{ name: 'experience.show', params: { id: this.experience.id } }" tag="div" class="clickable d-inline-block">
