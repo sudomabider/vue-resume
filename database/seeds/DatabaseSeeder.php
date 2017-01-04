@@ -175,14 +175,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /* SKILLS */
+        /* USER */
+        if (config('auth.testuser.email') AND config('auth.testuser.password')) {
+            factory(\App\Entities\User::class)->create([
+                'name' => config('auth.testuser.name'),
+                'email' => config('auth.testuser.email'),
+                'password' => bcrypt(config('auth.testuser.password'))
+            ]);
+        }
 
+        /* SKILLS */
         foreach ($this->skills as $skill) {
             \App\Entities\Skill::create($skill);
         }
 
         /* EXPERIENCES */
-
         foreach ($this->experiences as $experience) {
             $instance = \App\Entities\Experience::create(\Illuminate\Support\Arr::only($experience, ['employer','title','start','end', 'type']));
 
