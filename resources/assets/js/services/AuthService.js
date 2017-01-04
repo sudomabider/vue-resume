@@ -45,7 +45,10 @@ export default {
         }
       }, ({data}) => {
         localStorage.removeItem('jwt-token');
-        if (! data.refreshed_token) {
+        if (data.refreshed_token) {
+          localStorage.setItem('jwt-token', data.refreshed_token);
+        }
+        else {
           router.push('/login');
         }
       });

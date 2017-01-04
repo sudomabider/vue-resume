@@ -14,10 +14,15 @@
 $router = app(\Illuminate\Routing\Router::class);
 
 $router->resource('experiences', 'ExperienceController');
+$router->resource('experiences.skills', 'ExperienceSkillController');
+$router->resource('experiences.highlights', 'ExperienceHighlightController');
+
 $router->resource('projects', 'ProjectController');
+$router->resource('projects.highlights', 'ProjectHighlightController');
+
 $router->resource('skills', 'SkillController');
 
 $router->post('contact', ['uses' => 'ContactController@post']);
 
 $router->post('login', ['uses' => 'AuthController@authenticate']);
-$router->get('me', ['uses' => 'AuthController@getAuthenticatedUser']);
+$router->get('me', ['uses' => 'AuthController@getUser']);

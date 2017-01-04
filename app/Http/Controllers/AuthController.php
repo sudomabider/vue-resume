@@ -10,10 +10,11 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class AuthController
+class AuthController extends Controller
 {
     public function authenticate(Request $request)
     {
@@ -34,17 +35,23 @@ class AuthController
         return response()->json(compact('token'));
     }
 
-    public function getAuthenticatedUser()
+    public function getUser()
     {
         try {
-
             if (! $user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
             }
 
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
-            return response()->json(['token_expired'], $e->getCode() ? : 401);
+            try {
+                $token = JWTAuth::parseToken()->refresh();
+                $user = JWTAuth::parseToken($token)->authenticate();
+            } catch (JWTException $e) {
+                throw new UnauthorizedHttpException('jwt-auth', $e->getMessage(), $e, $e->getCode());
+            }
+
+            return response()->json(['user' => $user, ['refreshed_token' => $token]], $e->getCode() ? : 401);
 
         } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
 

@@ -21,10 +21,14 @@ class CreateSkillsTable extends Migration
         });
 
         Schema::create('has_skills', function(Blueprint $table) {
+            $table->increments('id');
+
             $table->morphs('skillable');
             $table->unsignedInteger('skill_id');
 
             $table->unsignedSmallInteger('percentage');
+
+            $table->timestamps();
         });
     }
 
