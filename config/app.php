@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Veo\'s Resume',
+    'name' => env('RESUME_NAME','Vue Resume'),
 
     /*
     |--------------------------------------------------------------------------

@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /* USER */
-        if (config('auth.testuser.email') AND config('auth.testuser.password')) {
+        if (config('resume.user.email') AND config('resume.user.password')) {
             factory(\App\Entities\User::class)->create([
-                'name' => config('auth.testuser.name'),
-                'email' => config('auth.testuser.email'),
-                'password' => bcrypt(config('auth.testuser.password'))
+                'name' => config('resume.user.name'),
+                'email' => config('resume.user.email'),
+                'password' => bcrypt(config('resume.user.password'))
             ]);
         }
 
