@@ -30,6 +30,10 @@
     </div>
 </footer>
 
+<script>
+    window.userName = "{{ config('resume.user.name') }}";
+    window.altName = "{{ config('resume.user.name_alt') }}";
+</script>
 <script src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>

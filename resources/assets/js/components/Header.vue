@@ -2,7 +2,7 @@
     <div class="jumbotron text-xs-center">
         <router-link :to="{ name: 'home' }" tag="div" style="cursor: pointer">
             <h1>
-                Veo Chen - <small>陈禹松</small>
+                {{userName}}<span v-if="altName"> - <small>{{altName}}</small></span>
             </h1>
         </router-link>
         <p>Full stack web developer specializing in <Rotator :values="rotation" /></p>
@@ -23,10 +23,23 @@
     import Rotator from './Rotator.vue'
     import auth from '../services/AuthService'
 
+    const header = {
+      template: ``
+    };
+
     export default {
       data() {
         return {
           rotation: ['Laravel', 'Bootstrap', 'VueJS', 'ReactJS']
+        }
+      },
+
+      computed: {
+        userName() {
+          return window.userName;
+        },
+        altName() {
+          return window.altName;
         }
       },
 
