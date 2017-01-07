@@ -22,6 +22,22 @@ $factory->define(\App\Entities\Experience::class, function (Faker\Generator $fak
     ];
 });
 
+$factory->state(\App\Entities\Experience::class, 'study', function(Faker\Generator $faker) {
+    return [
+        'employer' => $faker->word . ' University',
+        'title' => 'Degree in ' . implode(' ', $faker->words),
+        'type' => 'study'
+    ];
+});
+
+$factory->define(\App\Entities\Project::class, function (Faker\Generator $faker) {
+    return [
+        'name' => implode(' ', $faker->words),
+        'source' => $faker->url,
+        'url' => $faker->url,
+    ];
+});
+
 $factory->define(\App\Entities\Highlight::class, function(Faker\Generator $faker) {
     return [
         'content' => $faker->sentence

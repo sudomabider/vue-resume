@@ -22,11 +22,13 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         Project::creating(function(Project $project) {
-            $max = DB::table('projects')
+            $top = DB::table('projects')
                 ->orderBy('sort', 'desc')
-                ->first(['sort'])->sort;
+                ->first(['sort']);
 
-            $project->sort = $max + 1;
+            $sort = $top ? $top->sort : 0;
+
+            $project->sort = $sort + 1;
             return $project;
         });
     }
