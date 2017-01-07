@@ -14,7 +14,7 @@ use App\Entities\SkillAssociation;
 use App\Entities\SkillRepository;
 use Illuminate\Http\Request;
 
-class ProjectSkillController
+class ProjectSkillController extends Controller
 {
     /**
      * @var ProjectRepository
@@ -34,6 +34,7 @@ class ProjectSkillController
     {
         $this->projectRepository = $projectRepository;
         $this->skillRepository = $skillRepository;
+        $this->middleware('jwt.auth');
     }
 
     public function store(Request $request, $projectId)

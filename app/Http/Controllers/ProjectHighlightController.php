@@ -33,6 +33,7 @@ class ProjectHighlightController extends Controller
     {
         $this->highlightRepository = $highlightRepository;
         $this->projectRepository = $projectRepository;
+        $this->middleware('jwt.auth');
     }
 
     public function store(Request $request, $projectId)

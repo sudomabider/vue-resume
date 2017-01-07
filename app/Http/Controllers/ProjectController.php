@@ -26,6 +26,7 @@ class ProjectController extends Controller
     public function __construct(ProjectRepository $projectRepository)
     {
         $this->projectRepository = $projectRepository;
+        $this->middleware('jwt.auth')->only('store', 'update', 'reorder');
     }
 
     public function index()

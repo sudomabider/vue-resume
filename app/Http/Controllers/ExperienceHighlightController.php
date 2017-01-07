@@ -33,6 +33,7 @@ class ExperienceHighlightController extends Controller
     {
         $this->highlightRepository = $highlightRepository;
         $this->experienceRepository = $experienceRepository;
+        $this->middleware('jwt.auth');
     }
 
     public function store(Request $request, $experienceId)

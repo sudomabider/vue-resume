@@ -77,4 +77,11 @@ class ExperienceController extends Controller
 
         return $experience;
     }
+
+    public function destroy($experienceId)
+    {
+        $this->experienceRepository->delete($experienceId);
+
+        return;
+    }
 }

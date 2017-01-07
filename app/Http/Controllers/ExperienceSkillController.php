@@ -34,6 +34,7 @@ class ExperienceSkillController extends Controller
     {
         $this->experienceRepository = $experienceRepository;
         $this->skillRepository = $skillRepository;
+        $this->middleware('jwt.auth');
     }
 
     public function store(Request $request, $experienceId)
