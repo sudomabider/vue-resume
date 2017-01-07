@@ -1,18 +1,12 @@
 <template>
-    <ExperienceForm :experience="experience" />
+    <ExperienceInfo />
 </template>
 
 <script>
-  import ExperienceForm from '../components/ExperienceForm.vue'
+  import ExperienceInfo from '../components/ExperienceInfo.vue'
   import experienceService from '../services/ExperienceService'
 
   export default {
-    data() {
-      return {
-        experience: {}
-      }
-    },
-
-    components: { ExperienceForm }
+    components: { ExperienceInfo }
   }
 </script>

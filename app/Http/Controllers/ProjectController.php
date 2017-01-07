@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Entities\ProjectRepository;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -35,5 +36,30 @@ class ProjectController extends Controller
     public function show($projectId)
     {
         return $this->projectRepository->with(['highlights', 'skills'])->find($projectId);
+    }
+
+    public function store(Request $request)
+    {
+        list($created, $project) = $this->projectRepository->create($request->all());
+
+        return $project;
+    }
+
+    public function update(Request $request, $projectId)
+    {
+        list($updated, $project) = $this->projectRepository->update($projectId, $request->all());
+
+        return $project;
+    }
+
+    public function reorder(Request $request)
+    {
+        $order = $request->input('order');
+
+        foreach ($order as $project => $sort) {
+            $this->projectRepository->update($project, [
+                'sort' => $sort
+            ]);
+        }
     }
 }

@@ -8,6 +8,9 @@ import ExperienceView from './views/ExperienceView.vue'
 import ExperienceCreate from './views/ExperienceCreate.vue'
 import ExperienceEdit from './views/ExperienceEdit.vue'
 import ProjectView from './views/ProjectView.vue'
+import ProjectCreate from './views/ProjectCreate.vue'
+import ProjectEdit from './views/ProjectEdit.vue'
+import ProjectReorder from './views/ProjectReorder.vue'
 import LoginView from './views/LoginView.vue'
 import { year, yearMonth } from './filters/timeFilters'
 
@@ -27,6 +30,10 @@ const routes = [
 
   {path: '/experiences/create', name: 'experience.create', component: ExperienceCreate, meta: {auth:true}},
   {path: '/experiences/:id/edit', name: 'experience.edit', component: ExperienceEdit, meta: {auth:true}},
+
+  {path: '/projects/create', name: 'project.create', component: ProjectCreate, meta: {auth:true}},
+  {path: '/projects/:id/edit', name: 'project.edit', component: ProjectEdit, meta: {auth:true}},
+  {path: '/projects/reorder', name: 'project.reorder', component: ProjectReorder, meta: {auth:true}},
 
   {path: '*', redirect: '/'}
 ];

@@ -36,20 +36,22 @@ class ExperienceSkillController extends Controller
         $this->skillRepository = $skillRepository;
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $experienceId)
     {
+        $experience = $this->experienceRepository->find($experienceId);
 
+        $experience->skills()->attach($request->input('id'), [
+            'percentage' => $request->input('percentage')
+        ]);
+
+        $this->experienceRepository->forgetCache();
+
+        return $experience->skills()->where('skill_id', $request->input('id'))->first();
     }
 
     public function update(Request $request, $experienceId, $skillId)
     {
-        $experience = $this->experienceRepository->find($experienceId);
-
-        $association = SkillAssociation::toSkillable($experience)->toSkill($skillId)->first();
-
-        if (!$association) {
-            return $this->skillRepository->find($skillId);
-        }
+        $association = $this->getSkillAssociation($experienceId, $skillId);
 
         $association->fill([
             'skill_id' => $request->input('id'),
@@ -58,11 +60,29 @@ class ExperienceSkillController extends Controller
 
         $this->experienceRepository->forgetCache();
 
-        return $association->skill;
+        return $association;
     }
 
-    public function destroy($experienceId)
+    public function destroy($experienceId, $skillId)
     {
+        $association = $this->getSkillAssociation($experienceId, $skillId);
 
+        $association->delete();
+
+        $this->experienceRepository->forgetCache();
+
+        return;
+    }
+
+    /**
+     * @param $experienceId
+     * @param $skillId
+     * @return mixed
+     */
+    protected function getSkillAssociation($experienceId, $skillId)
+    {
+        $experience = $this->experienceRepository->find($experienceId);
+
+        return SkillAssociation::toSkillable($experience)->toSkill($skillId)->first();
     }
 }

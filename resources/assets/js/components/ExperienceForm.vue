@@ -1,53 +1,63 @@
 <template>
     <div class="ubuntu-mono">
-        <form>
-            <div class="row">
-                <div class="col-md-4 form-group">
-                    <input type="text" name="employer" v-model="form.employer" class="form-control" placeholder="Employer">
-                </div>
-                <div class="col-md-4 form-group">
-                    <input type="text" name="title" v-model="form.title" class="form-control" placeholder="Title">
-                </div>
-                <div class="col-md-2 form-group">
-                    <input type="text" name="start" v-model="form.start" class="form-control" placeholder="Start date">
-                </div>
-                <div class="col-md-2 form-group">
-                    <input type="text" name="end" v-model="form.end" class="form-control" placeholder="End date">
-                </div>
+        <ExperienceInfo :experienceData="experience" v-if="experience" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-xs-center">
+                    Skills
+                    <a href="#" class="text-success small" @click.prevent="addSkillFormGroup">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </h2>
+                <ExperienceSkills :experienceSkills="experienceSkills"
+                                   :experience="experience"/>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="text-xs-center">Skills</h2>
-                    <SkillAssociations :associations="experience.skills" :experience="experience" />
-                </div>
+            <div class="col-md-6">
+                <h2 class="text-xs-center">
+                    Highlights
+                    <a href="#" class="text-success small" @click.prevent="addHighlightFormGroup">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </h2>
+                <ExperienceHighlights :experienceHighlights="experienceHighlights"
+                                  :experience="experience"/>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
 <script>
     import {yearMonth} from '../filters/timeFilters'
-    import SkillAssociations from './SkillAssociations.vue'
+    import ExperienceInfo from './ExperienceInfo.vue'
+    import ExperienceSkills from './ExperienceSkills.vue'
+    import ExperienceHighlights from './ExperienceHighlights.vue'
+    import experienceService from '../services/ExperienceService'
 
     export default {
       props: ['experience'],
 
       data() {
         return {
-          form: {
-            employer: this.experience.employer,
-            title: this.experience.title,
-            start: yearMonth(this.experience.start),
-            end: yearMonth(this.experience.end),
-            skills: this.experience.skills || [],
-            highlights: this.experience.highlights || []
-          }
+          experienceSkills: this.experience.skills,
+          experienceHighlights: this.experience.highlights
+        }
+      },
+
+      methods: {
+        addSkillFormGroup() {
+          this.experienceSkills.push({});
+        },
+        addHighlightFormGroup() {
+          this.experienceHighlights.push({});
         }
       },
 
       components: {
-        SkillAssociations
+        ExperienceInfo,
+        ExperienceSkills,
+        ExperienceHighlights
       }
     }
 </script>

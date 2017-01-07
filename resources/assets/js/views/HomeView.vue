@@ -34,6 +34,16 @@
         </div>
         <br>
         <h1 class="resume-header">Projects</h1>
+        <h1 class="d-inline" v-if="$root.authenticated">
+            <router-link :to="{ name: 'project.create'}" class="btn btn-success btn-sm">
+                <i class="fa fa-plus fa-fw"></i>NEW
+            </router-link>
+        </h1>
+        <h1 class="d-inline" v-if="$root.authenticated">
+            <router-link :to="{ name: 'project.reorder'}" class="btn btn-warning btn-sm">
+                <i class="fa fa-refresh fa-fw"></i>REORDER
+            </router-link>
+        </h1>
         <div id="projects">
             <transition-group name="list" tag="div">
                 <Project

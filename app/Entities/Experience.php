@@ -9,6 +9,8 @@ class Experience extends Model
 {
     use Highlightable, Skillable;
 
+    protected $fillable = ['employer', 'title', 'start', 'end', 'type'];
+
     protected $appends = ['year_range', 'duration', 'start_year', 'end_year', 'is_single'];
 
     protected $dates = ['start', 'end'];

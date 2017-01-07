@@ -1,5 +1,6 @@
 <template>
-    <ExperienceForm :experience="experience" v-if="experience"/>
+    <ExperienceForm v-if="experience"
+                    :experience="experience"/>
 </template>
 
 <script>

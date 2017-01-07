@@ -15,10 +15,18 @@ $router = app(\Illuminate\Routing\Router::class);
 
 $router->resource('experiences', 'ExperienceController');
 $router->resource('experiences.skills', 'ExperienceSkillController');
-$router->resource('experiences.highlights', 'ExperienceHighlightController');
+
+$router->resource('experiences.highlights', 'ExperienceHighlightController', ['only' => ['store']]);
+$router->put('highlights/{highlightId}', ['uses' => 'ExperienceHighlightController@update']);
+$router->delete('highlights/{highlightId}', ['uses' => 'ExperienceHighlightController@destroy']);
 
 $router->resource('projects', 'ProjectController');
-$router->resource('projects.highlights', 'ProjectHighlightController');
+$router->post('projects/reorder', ['uses' => 'ProjectController@reorder']);
+$router->resource('projects.skills', 'ProjectSkillController');
+
+$router->resource('projects.highlights', 'ProjectHighlightController', ['only' => ['store']]);
+$router->put('highlights/{highlightId}', ['uses' => 'ProjectHighlightController@update']);
+$router->delete('highlights/{highlightId}', ['uses' => 'ProjectHighlightController@destroy']);
 
 $router->resource('skills', 'SkillController');
 

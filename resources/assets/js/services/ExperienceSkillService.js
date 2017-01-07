@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 export default {
   store(experienceId,data) {
-    return Vue.http.post('/api/experiences/' + experienceId, data);
+    return Vue.http.post('/api/experiences/' + experienceId + '/skills', data);
   },
 
   update(experienceId, skillId, data) {

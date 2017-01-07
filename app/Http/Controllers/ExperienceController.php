@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Entities\ExperienceRepository;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
 {
@@ -55,5 +56,25 @@ class ExperienceController extends Controller
     public function show($experienceId)
     {
         return $this->experienceRepository->with(['highlights', 'skills'])->find($experienceId);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $data['start'] = $data['start'] . '-01';
+        $data['end'] = $data['end'] ? $data['end'] . '-01' : null;
+        list($created, $experience) = $this->experienceRepository->create($data);
+
+        return $experience;
+    }
+
+    public function update(Request $request, $experienceId)
+    {
+        $data = $request->all();
+        $data['start'] = $data['start'] . '-01';
+        $data['end'] = $data['end'] ? $data['end'] . '-01' : null;
+        list($updated, $experience) = $this->experienceRepository->update($experienceId, $data);
+
+        return $experience;
     }
 }
